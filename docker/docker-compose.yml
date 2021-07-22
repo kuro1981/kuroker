@@ -1,0 +1,18 @@
+version: '3'
+services:
+
+  r-origin:
+    build:  
+      context: "."
+      dockerfile: Dockerfile
+    ports:
+      - 8787:8787
+    environment:
+      - USER=rstudio
+      - PASSWORD=password
+      - DISABLE_AUTH: "true"
+      - ROOT: true
+      - VIRTUAL_HOST=kuroker.localhost
+    network_mode: "bridge"
+    volumes: 
+        - /d/dev:/home/rstudio/dev
